@@ -10,8 +10,8 @@ import datetime
 import builtins
 import requests
 
-# print(random.random()) # float between 0 and 1
-# print(random.randrange(1, 10)) # int between 1 and 9
+print(random.random()) # float between 0 and 1
+print(random.randrange(1, 10)) # int between 1 and 9
 
 # num_float = 23.66
 # print(math.ceil(num_float)) # round up
@@ -19,17 +19,17 @@ import requests
 # print(math.pi) # pi
 # print(f"Remainder from 1/5: {math.remainder(1, 5)}")
 
-working_dir = os.getcwd()
-print(f"Current working directory: {working_dir}")
-
-user = os.environ.get("USERNAME") or os.environ.get("USER")
-print(f"Username: {user}")
-
-cpu_cores = os.cpu_count()
-print(f"Num of cores: {cpu_cores}")
-
-os.mkdir("test_dir")
-os.rmdir("test_dir")
+# working_dir = os.getcwd()
+# print(f"Current working directory: {working_dir}")
+#
+# user = os.environ.get("USERNAME") or os.environ.get("USER")
+# print(f"Username: {user}")
+#
+# cpu_cores = os.cpu_count()
+# print(f"Num of cores: {cpu_cores}")
+#
+# os.mkdir("test_dir")
+# os.rmdir("test_dir")
 
 # print(f"Current path: {sys.path}")
 # print(f"Current python version: {sys.version}")

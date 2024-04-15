@@ -96,7 +96,10 @@ Output:
 
 ## Scripts a DevOps engineer may create/use
 
-1. A script to deploy a program to a target environment
-2. A script to find the cause of a program crashing by analyzing log files
-3. A script to search a directory for specific file contents
-4. 
+1. A script to deploy a program to a target environment.
+2. A script to find the cause of a program crashing by analyzing log files.
+3. A script to search a directory for specific file contents.
+4. A script to read from or write to JSON files.
+5. A script to make backups of projects.
+6. A script to scrape websites for information.
+7. A script to check SSL certificates are valid.

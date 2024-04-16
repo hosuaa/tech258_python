@@ -16,6 +16,8 @@ is where we can use a script which interacts with Photoshop to automatically edi
 The script is a few lines of code that is written to work with, or extend, Photoshop which itself is a large scale program consisting
 of many lines of code.
 
+![image](photoshop_script.png)
+
 ## Standard Python Library
 
 The packages in the Standard Python Library are packages that are so useful to developers that they come shipped with Python

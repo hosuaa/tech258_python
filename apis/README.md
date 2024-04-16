@@ -2,7 +2,7 @@
 
 ## What are APIs
 
-APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols. The software components are the 'applications' and the mechanism is the 'interface', hence 'Application programming interface'. 
+An application programming interface (API) is a way for two or more computer programs or components to communicate with each other.
 
 APIs are usually explained in terms of a client and a server. The application sending the request is called the client, and the application sending the response is called the server. 
 
@@ -36,7 +36,7 @@ An API is 'RESTful' if it uses HTTP requests to access and use data. The data tr
     - self-descriptive messages returned to the client have enough information to describe how the client should process it.
     - hypertext/hypermedia is available, meaning that after accessing a resource the client should be able to use hyperlinks to find all other currently available actions they can take.
 5. A layered system that organizes each type of server (those responsible for security, load-balancing, etc.) involved the retrieval of requested information into hierarchies, invisible to the client.
-6. Code-on-demand: the ability to send executable code from the server to the client when requested, extending client functionality. 
+6. Code-on-demand (Optional) : the ability to send executable code from the server to the client when requested, extending client functionality. 
 
 These guidelines are quite strict so many APIs do not conform to every element of REST, and so RESTful APIs are useful for following standards while remaining flexible and lightweight. (**1, 2 and 3** are most commonly implemented)
 

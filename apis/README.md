@@ -6,7 +6,9 @@ APIs are mechanisms that enable two software components to communicate with each
 
 APIs are usually explained in terms of a client and a server. The application sending the request is called the client, and the application sending the response is called the server. 
 
-![image](api_data_transfer.png)
+API endpoints are the final touchpoints in the API communication system. These include server URLs, services, and other specific digital locations from where information is sent and received between systems. 
+
+![image](images/api_data_transfer.png)
 
 APIs can be used to integrate new applications with existing software systems. Since we are reusing existing code, this can dramatically increase development speed and so APIs are very popular.  
 
@@ -42,7 +44,7 @@ These guidelines are quite strict so many APIs do not conform to every element o
 
 HTTP stands for Hypertext Transfer Protocol and is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack.
 
-![image](tcpip-stack.png)
+![image](images/tcpip-stack.png)
 
 The application layer contains the communications protocols, including HTTP, and interface methods used in process-to-process communications across an Internet Protocol (IP) computer network.
 
@@ -54,8 +56,8 @@ A typical flow over HTTP involves a client machine making a request to a server,
 
 ### HTTP request
 
-![image](HTTP_request.png)
-![image](http_req.png)
+![image](images/HTTP_request.png)
+![image](images/http_req.png)
 A typical HTTP request contains:
 
 1. HTTP version type<br>
@@ -67,14 +69,14 @@ E.g. GET, POST<br>
 A ‘GET’ request expects information back in return (usually in the form of a website), while a ‘POST’ request typically indicates that the client is submitting information to the web server (such as form information, e.g. a submitted username and password).
 4. HTTP request headers<br>
 HTTP headers contain text information stored in key-value pairs. These headers communicate core information, such as what browser the client is using and what data is being requested.
-![image](http-request-headers.png)
+![image](images/http-request-headers.png)
 5. Optional HTTP body<br>
 The body of a request is the part that contains the actual information the request is transferring such as any information being submitted to the web server e.g. username and password, or any other data entered into a form.
 
 ### HTTP response
 
-![image](HTTP_response.png)
-![image](http_rep.png)
+![image](images/HTTP_response.png)
+![image](images/http_rep.png)
 A typical HTTP response contains:
 
 1. an HTTP status code<br>
@@ -87,7 +89,7 @@ A typical HTTP response contains:
 
 2. HTTP response headers<br>
 Similar to HTTP request headers they communicate the core information required.
-![image](http-response-headers.png)
+![image](images/http-response-headers.png)
 3. optional HTTP body<br>
 The requested information. In most web requests, this is HTML data that a web browser will translate into a webpage.
 
@@ -145,21 +147,27 @@ In stateless client-server communication, each request is separate and unconnect
 
 An example of a stateless request could be:
 ```
-GET /example HTTP/1.1
-Host: www.example.com
-```
-This is in contrast to a corresponding stateful request:
-```
 GET /profile HTTP/1.1
 Host: www.example.com
 Cookie: session_token=abcdef1234567890
 ```
-In this stateful request, the server is relying on information stored on the client side to maintain the state of the request. In the stateless request, there is no information required.
+This is in contrast to a corresponding stateful request:
+```
+GET /example HTTP/1.1
+Host: www.example.com
+```
+
+In this stateful request, the server is relying on information stored on the client side/server side to maintain the state of the request. In the stateless request, there is no additional information required, as all the information needed is required in the request.
+
+As a result, in stateful requests, you may be waiting on the result of other requests, which can slow down the response time and reduce efficiency. This is why stateless requests are preferred. 
 
 ## Caching
 
-todo
+Caching is storing frequently used data in a temporary storage to speed up data access as the data is not required to be fetched from the original source. For example, the data can be retrieved from the cache stored on your local system rather than fetching it from a server. 
 
+The data stored is only data that is frequently used as cache storage is typically small. This is because it is unfeasible to store all data encountered in the cache permanently. 
+
+For example, when browsing the web, the web data is first fetched from the server, and a local copy is saved to your cache. When you need to access the website again, rather than fetching the data from the server, the data is fetched from your cache which dramatically decreases the response time. After a while, or if it fills up, the cache may be reset to allow for new websites to be added.
 
 
 

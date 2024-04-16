@@ -13,7 +13,7 @@ APIs can be used to integrate new applications with existing software systems. S
 There are 4 different kinds of API architectures:
 1. **SOAP**:
 SOAP stands for Simple Object Access Protocol, where the client and server exchange messages using XML.<br>
-While outdated, SOAP is still sometimes used since compared to REST, SOAP is Language, platform, and transport independent (REST requires use of HTTP) Works well in distributed enterprise environments (REST assumes direct point-to-point communication). For example, SOAP is used in bank transfers. 
+While outdated, SOAP is still sometimes used since compared to REST, SOAP is language, platform, and transport independent (REST requires use of HTTP) Works well in distributed enterprise environments (REST assumes direct point-to-point communication). For example, SOAP is used in bank transfers. 
 2. **RPC**:
 RPC stands for Remote Procedure Call, where the client completes a function on the server and the server sends the output back to the client.<br>
 RPC allows developers to call remote functions in external servers as if they were local to their software. For example, you can add chat functionality to your application by remotely calling messaging functions on another chat application.
@@ -48,14 +48,14 @@ The application layer contains the communications protocols, including HTTP, and
 
 ### HTTPS
 
-HTTPS stands for Hypertext Transfer Protocol Secure and is an extension of HTTP. It implements encryption to ensure secure communication which is especially useful over the internet. It uses Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL) for encryption and so the protocol is also referred to as HTTP over TLS or HTTP over SSL.
+HTTPS stands for Hypertext Transfer Protocol Secure and is an extension of HTTP. It implements encryption for data being tranmitted (e.g. when paying for something online) to ensure secure communication which is especially useful over the internet. It uses Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL) for encryption and so the protocol is also referred to as HTTP over TLS or HTTP over SSL.
 
 A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message. Some HTTP methods include GET, PUT and DELETE
 
 ### HTTP request
 
 ![image](HTTP_request.png)
-
+![image](http_req.png)
 A typical HTTP request contains:
 
 1. HTTP version type<br>
@@ -74,18 +74,91 @@ The body of a request is the part that contains the actual information the reque
 ### HTTP response
 
 ![image](HTTP_response.png)
-
+![image](http_rep.png)
 A typical HTTP response contains:
 
 1. an HTTP status code<br>
 3 digit codes used to indicate whether a successful HTTP request has been completed. There are 5 kinds:
    - 1xx Informational
-   - 2xx Success
+   - 2xx Success E.g. 200 (Ok)
    - 3xx Redirection 
-   - 4xx Client Error 
+   - 4xx Client Error E.g. 404 (Not Found)
    - 5xx Server Error
-2. HTTP response headers
-3. optional HTTP body
+
+2. HTTP response headers<br>
+Similar to HTTP request headers they communicate the core information required.
+![image](http-response-headers.png)
+3. optional HTTP body<br>
+The requested information. In most web requests, this is HTML data that a web browser will translate into a webpage.
+
+### HTTP verbs
+
+These are the methods that can be called in a HTTP request. These correspond to create, read, update, and delete (or CRUD) operations, respectively. There are a number of other verbs, too, but are utilized less frequently They are:
+1. **POST**<br>
+CREATE - creates new resources. On successful creation, return HTTP status 201, returning a Location header with a link to the newly-created resource with the 201 HTTP status.
+```
+POST /submit-form HTTP/1.1
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+
+username=user&password=pass
+```
+2. **GET**<br>
+READ - reads a representation of a resource.  In the “happy” (or non-error) path, GET returns a representation in XML or JSON and an HTTP response code of 200 (OK). In an error case, it most often returns a 404 (NOT FOUND) or 400 (BAD REQUEST).
+```
+GET /example HTTP/1.1
+Host: www.example.com
+```
+3. **PUT**<br>
+UPDATE - updates a resource, or creates it if it does not exist (not reccomended). On successful update, return 200 (or 204 if not returning any content in the body) from a PUT. If using PUT for create, return HTTP status 201 on successful creation.
+```
+PUT /users/123 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "age": 30,
+    "email": "john@example.com"
+}
+```
+4. **PATCH**<br>
+UPDATE - modifies a resource. Similar to PUT, but the body contains a set of instructions describing how a resource currently residing on the server should be modified to produce a new version. This means that the PATCH body should not just be a modified part of the resource, but in some kind of patch language like JSON Patch or XML Patch.
+```
+PATCH /users/123 HTTP/1.1
+Host: www.example.com
+Content-Type: application/json
+
+{
+    "age": 31
+}
+```
+5. **DELETE**<br>
+DELETE - deletes a resource. On successful deletion, return HTTP status 200 (OK) along with a response body, perhaps the representation of the deleted item (often demands too much bandwidth), or a wrapped response (see Return Values below). Either that or return HTTP status 204 (NO CONTENT) with no response body.
+```
+DELETE /users/123 HTTP/1.1
+Host: www.example.com
+```
+## Statelessness
+
+In stateless client-server communication, each request is separate and unconnected so no client information is stored between requests. Therefore, each request from a client to a server must contain all the information necessary to understand the request
+
+An example of a stateless request could be:
+```
+GET /example HTTP/1.1
+Host: www.example.com
+```
+This is in contrast to a corresponding stateful request:
+```
+GET /profile HTTP/1.1
+Host: www.example.com
+Cookie: session_token=abcdef1234567890
+```
+In this stateful request, the server is relying on information stored on the client side to maintain the state of the request. In the stateless request, there is no information required.
+
+## Caching
+
+todo
 
 
 

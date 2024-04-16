@@ -136,7 +136,7 @@ Content-Type: application/json
 }
 ```
 5. **DELETE**<br>
-DELETE - deletes a resource. On successful deletion, return HTTP status 200 (OK) along with a response body, perhaps the representation of the deleted item (often demands too much bandwidth), or a wrapped response (see Return Values below). Either that or return HTTP status 204 (NO CONTENT) with no response body.
+DELETE - deletes a resource. On successful deletion, return HTTP status 200 (OK) along with a response body, perhaps the representation of the deleted item (often demands too much bandwidth), or a wrapped response. Either that or return HTTP status 204 (NO CONTENT) with no response body.
 ```
 DELETE /users/123 HTTP/1.1
 Host: www.example.com
